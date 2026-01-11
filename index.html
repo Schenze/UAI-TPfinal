@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <head>Simon Dice!
+    <head>
+        <title>Simon Dice!</title>
         <link rel="stylesheet" href="normalize.css">
         <link rel="stylesheet" href="styles.css">
+        
     </head>
     <body>
+        <section id="tablaPuntacion">
+            <div>Puntuacion</div>
+            <div class="puntuacion">-</div>
+            <div>Nivel</div>
+            <div class="nivel">-</div>
+        </section>
+        <aside id="rankings">
+            <div class="rankNombre">PlaceholderNombre</div>
+            <div class="rankPuntos">PlaceholderPuntuacion</div>
+            <div class="rankNivel">PlaceholderNivel</div>
+                <!-- <section id="rankingsJugadores">
+                    <div>textoA</div>
+                    <div>textoB</div>
+                    <div>textoC</div>
+                </section> -->
+        </aside>
+        <main>
         <div id="juego">
-            <div class="celda" pos = "1"></div>
-            <div class="celda" pos = "2"></div>
-            <div class="celda" pos = "3"></div>
-            <div class="celda" pos = "4"></div>
+            <div class="celda" pos="1"></div>
+            <div class="celda" pos="2"></div>
+            <div class="celda" pos="3"></div>
+            <div class="celda" pos="4"></div>
         </div>
         <div id="botonMensaje">
+            <section id="preguntarNombre">
+            <input type="text" id="inputNombre">
+            </section>
+            <div id= texto>texto</div>
             <div id="mensaje"></div>
             <button id="comienzo">Empezar</button>
         </div>
-        <script src="script.js"></script>
+        </main>
+       <script defer src="puntuacion.js"></script> 
+        <script async src="script.js"></script>
     </body>
 </html>
