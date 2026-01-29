@@ -64,6 +64,7 @@ button
     color:gold;
     justify-content: space-between;
     flex-wrap: nowrap;
+    flex-direction: column;
 }
 
 #preguntarNombre
@@ -79,14 +80,28 @@ button
     flex-wrap: nowrap;
 }
 
-/* #rankingsJugadores
+#rank
 {
     display:flex;
     position:fixed;
     color:gold;
+    width: 700px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start;
+}
+
+#rankJugadores
+{
+    display:flex;
+    position:fixed;
+    color:green;
     width: 300px;
     justify-content: space-between;
     flex-wrap: nowrap;
+    flex-direction: column;
     align-items: center;
     align-self: flex-start;
-} */
+} 

@@ -7,14 +7,18 @@ function validacionInput()
     let nombre = document.getElementById("inputNombre").value;
     let nombreEX = /^[a-zA-Z0-9]{3,}$/;
 
-    if (nombreEX.test(nombre))
+    if (nombreEX.test(nombre) == true)
     {
         document.getElementById("texto").innerHTML = "Nombre Valido";
         document.getElementById("texto").style.color = "green";
+        celdas.forEach(celda => {
+        celda.addEventListener("click",celdaClick);
+        })
         comenzarJuego();
     }else{
         document.getElementById("texto").innerHTML = "Nombre NO Valido";
         document.getElementById("texto").style.color = "red";
+        movimientos = 0; // borrar?
     }
 }
 
@@ -46,12 +50,11 @@ function comenzarJuego()
     document.querySelector(".puntuacion").innerHTML = "0";
 }
 
-function secuencia()
+function secuencia(nivel)
 {
     movimientos = [];
     hacerMovimientos(1);
-    document.querySelector("#mensaje").innerHTML = "Simon Dice!";
-
+    
     for (let i = 0; i < movimientos.length; i++)
     {
         iluminar(movimientos[i],600*i)
@@ -61,6 +64,7 @@ function secuencia()
        document.querySelector("#mensaje").innerHTML = "Haz el patron";
     }, 600 * movimientos.length);
 
+    insertarRanking(nivel);
 }
 
 function celdaClick(e)
@@ -78,7 +82,7 @@ function celdaClick(e)
             {
                 movTotales++;
                 setTimeout(() => {
-                console.log("SetPuntaje esta aqui!.");
+                //console.log("SetPuntaje esta aqui!.");
                 setPuntaje();
                 secuencia();
                 },1000);
@@ -92,6 +96,7 @@ function celdaClick(e)
                 document.querySelector("#comienzo").style.display = "block";
                 document.querySelector("#mensaje").style.display = "none";
             }, 1000);
+            //escribirScoreboard(); // test, cuando pierde escribir en el Scoreboard
         }
     }
 }
@@ -100,12 +105,3 @@ document.querySelector("#comienzo").addEventListener("click",validacionInput);
 //document.querySelector("#comienzo").addEventListener("click",comenzarJuego);
 document.querySelector("#comienzo").addEventListener("click",setPuntaje);
 let celdas = Array.from(document.getElementsByClassName("celda"));
-
-celdas.forEach(celda => {
-    celda.addEventListener("click",celdaClick);
-})
-
-
-formulario.addEventListener('submit',(e) => {
-    e.preventDefault();
-});
