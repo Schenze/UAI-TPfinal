@@ -2,6 +2,12 @@
 let movimientos,movTotales,celdaPos;
 var perder = 0; // flag, para verificar si pierde o no
 
+document.addEventListener('DOMContentLoaded', () => {
+  cargarStorage();// siempre se ejecuta lo primero de todo y espera que el HTML este cargado
+  escribirScoreboard(); // escribir el scoreboard
+  //console.log("deberia de ejecutar el storage del principio");
+});
+
 function validacionInput()
 {
     let nombre = document.getElementById("inputNombre").value;
@@ -9,18 +15,19 @@ function validacionInput()
 
     if (nombreEX.test(nombre) == true)
     {
-        document.getElementById("texto").innerHTML = "Nombre Valido";
-        document.getElementById("texto").style.color = "green";
+        document.getElementById("validacionNombre").innerHTML = "Nombre Valido";
+        document.getElementById("validacionNombre").style.color = "green";
         celdas.forEach(celda => {
         celda.addEventListener("click",celdaClick);
         })
         comenzarJuego();
     }else{
-        document.getElementById("texto").innerHTML = "Nombre NO Valido";
-        document.getElementById("texto").style.color = "red";
+        document.getElementById("validacionNombre").innerHTML = "Nombre NO Valido";
+        document.getElementById("validacionNombre").style.color = "red";
         movimientos = 0; // borrar?
     }
 }
+
 
 function iluminar(celdaPos,tiempo)
 {
@@ -48,6 +55,11 @@ function comenzarJuego()
     document.querySelector(("#mensaje")).style.display = "block";
     secuencia();
     document.querySelector(".puntuacion").innerHTML = "0";
+    const cambioNombre = document.getElementById("inputNombre");// desabilita la edicion del nombre
+    cambioNombre.readOnly = true;
+    cambioNombre.style.backgroundColor = "#000000";  // Fondo rojo claro
+    cambioNombre.style.color = "#cc0000";             // Texto rojo
+    cambioNombre.style.border = "2px solid #ff0000";  // Borde rojo
 }
 
 function secuencia(nivel)
@@ -96,10 +108,16 @@ function celdaClick(e)
                 document.querySelector("#comienzo").style.display = "block";
                 document.querySelector("#mensaje").style.display = "none";
             }, 1000);
+                const cambioNombre = document.getElementById("inputNombre");// habilita la edicion del nombre
+                cambioNombre.readOnly = false;
+                cambioNombre.style.backgroundColor = "";  // Fondo rojo claro
+                cambioNombre.style.color = "";             // Texto rojo
+                cambioNombre.style.border = "";  // Borde rojo
             //escribirScoreboard(); // test, cuando pierde escribir en el Scoreboard
         }
     }
 }
+
 
 document.querySelector("#comienzo").addEventListener("click",validacionInput);
 //document.querySelector("#comienzo").addEventListener("click",comenzarJuego);

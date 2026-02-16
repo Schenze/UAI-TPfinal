@@ -14,13 +14,21 @@
             <div class="nivel">-</div>
         </section>
         <aside id="rankings">
-            <div class="rank">Nombre Puntos Fecha</div>
-            <div class="col-nombre">test</div>
-            <div class="col-puntos">test</div>
+            <div class="rank">aqui van los puntos</div>
+            <div class="col-nombre"></div>
+            <div class="col-puntos"></div>
             <!--<div class="col-nivel">test</div> -->
-            <div class="col-tiempo">test</div>
-                
+            <div class="col-tiempo"></div>
         </aside>
+        <aside id="opcionesTexto">Opciones!</aside>
+        <aside id="opciones">
+            <label>
+            <input type="checkbox" id="filtroPuntosFecha" hidden>
+            <div id="textoFiltro">Click Para organizar la Tabla de puntos</div>
+            </label>
+            <a href="./creditos/creditos.html" target="_blank">Creditos</a>
+        </aside>
+
         <main>
         <div id="juego">
             <div class="celda" pos="1"></div>
@@ -32,13 +40,24 @@
             <section id="preguntarNombre">
             <input type="text" id="inputNombre">
             </section>
-            <div id= texto>texto</div>
+            <label>
+                <input type="checkbox" id="guardado" hidden>
+                <div id="textoCheckbox">Click aqui para activar guardado automatico</div>
+            </label>
+            <div id="validacionNombre"></div>
             <div id="mensaje"></div>
-            <button id="comienzo">Empezar</button>
+            <section id ="botones">
+                <button id="comienzo">Empezar</button>
+                <!-- Debug borrar Luego -->
+                <button id="debugSalvar">Salvar Puntos</button>
+        </section>
+        <!-- <button id="debugCargar">CargarStorage Puntos</button> -->
+        <!-- <button id="debugGuardar">Borrar</button> -->
         </div>
         </main>
        <script defer src="puntuacion.js"></script>
        <script defer src="ranking.js"></script> 
-        <script async src="script.js"></script>
+       <script defer src="script.js"></script>
+       <script defer src="guardado.js"></script>
     </body>
 </html>
