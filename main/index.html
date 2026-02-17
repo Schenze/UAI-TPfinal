@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simon Dice!</title>
+        <link rel="stylesheet" href="normalize.css">
+        <link rel="stylesheet" href="styles.css">
+        
+    </head>
+    <body>
+        <section id="tablaPuntacion">
+            <div>Puntuacion</div>
+            <div class="puntuacion">-</div>
+            <div>Nivel</div>
+            <div class="nivel">-</div>
+        </section>
+        <aside id="rankings">
+            <div class="rank">aqui van los puntos</div>
+            <div class="col-nombre"></div>
+            <div class="col-puntos"></div>
+            <!--<div class="col-nivel">test</div> -->
+            <div class="col-tiempo"></div>
+        </aside>
+        <aside id="opcionesTexto">Opciones!</aside>
+        <aside id="opciones">
+            <label>
+            <input type="checkbox" id="filtroPuntosFecha" hidden>
+            <div id="textoFiltro">Click Para organizar la Tabla de puntos</div>
+            </label>
+            <a href="B:\GitTPFinal\creditos\creditos.html" target="_blank">Creditos</a>
+        </aside>
+
+        <main>
+        <div id="juego">
+            <div class="celda" pos="1"></div>
+            <div class="celda" pos="2"></div>
+            <div class="celda" pos="3"></div>
+            <div class="celda" pos="4"></div>
+        </div>
+        <div id="botonMensaje">
+            <section id="preguntarNombre">
+            <input type="text" id="inputNombre">
+            </section>
+            <label>
+                <input type="checkbox" id="guardado" hidden>
+                <div id="textoCheckbox">Click aqui para activar guardado automatico</div>
+            </label>
+            <div id="validacionNombre"></div>
+            <div id="mensaje"></div>
+            <section id ="botones">
+                <button id="comienzo">Empezar</button>
+                <!-- Debug borrar Luego -->
+                <button id="debugSalvar">Salvar Puntos</button>
+        </section>
+        <!-- <button id="debugCargar">CargarStorage Puntos</button> -->
+        <!-- <button id="debugGuardar">Borrar</button> -->
+        </div>
+        </main>
+       <script defer src="puntuacion.js"></script>
+       <script defer src="ranking.js"></script> 
+       <script defer src="script.js"></script>
+       <script defer src="guardado.js"></script>
+    </body>
+</html>
