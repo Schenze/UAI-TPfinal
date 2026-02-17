@@ -52,6 +52,7 @@ function comenzarJuego()
     movimientos = [];
     movTotales = 2;
     document.querySelector(("#comienzo")).style.display = "none";
+    document.querySelector(("#debugSalvar")).style.display = "none";
     document.querySelector(("#mensaje")).style.display = "block";
     secuencia();
     document.querySelector(".puntuacion").innerHTML = "0";
@@ -106,6 +107,7 @@ function celdaClick(e)
             document.querySelector("#mensaje").innerHTML = "Game over!";
             setTimeout(() => {
                 document.querySelector("#comienzo").style.display = "block";
+                document.querySelector("#debugSalvar").style.display = "block";
                 document.querySelector("#mensaje").style.display = "none";
             }, 1000);
                 const cambioNombre = document.getElementById("inputNombre");// habilita la edicion del nombre
