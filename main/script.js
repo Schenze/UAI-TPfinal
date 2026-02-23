@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function validacionInput()
 {
+    
     let nombre = document.getElementById("inputNombre").value;
     let nombreEX = /^[a-zA-Z0-9]{3,}$/;
 
@@ -20,6 +21,7 @@ function validacionInput()
         celdas.forEach(celda => {
         celda.addEventListener("click",celdaClick);
         })
+        perder=0;
         comenzarJuego();
     }else{
         document.getElementById("validacionNombre").innerHTML = "Nombre NO Valido";
@@ -82,9 +84,13 @@ function secuencia(nivel)
 
 function celdaClick(e)
 {
+    console.log("Celda Click!");
+    console.log("perder: ",perder);
     celdaPos = e.target.getAttribute("pos");
-    iluminar(celdaPos,0);
-
+    if(perder === 0){
+        iluminar(celdaPos,0); // esto resuelve el bug de prender las luces aunque el juego no este andando
+    }
+    
     if(movimientos && movimientos.length)
     {
         if(movimientos[0]==celdaPos)
