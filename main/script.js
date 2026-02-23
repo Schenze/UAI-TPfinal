@@ -1,5 +1,7 @@
 "use strict";
-let movimientos,movTotales,celdaPos;
+let movTotales,celdaPos;
+let movimientos = [];
+let movimientosJugador = [];
 var perder = 0; // flag, para verificar si pierde o no
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -26,7 +28,7 @@ function validacionInput()
     }else{
         document.getElementById("validacionNombre").innerHTML = "Nombre NO Valido";
         document.getElementById("validacionNombre").style.color = "red";
-        movimientos = 0; // borrar?
+        //movimientos = 0; // borrar?
     }
 }
 
@@ -41,17 +43,25 @@ function iluminar(celdaPos,tiempo)
     },tiempo);
 }
 
-function hacerMovimientos(movActual)
+function hacerMovimientos()
 {
-    movimientos.push( Math.floor(Math.random() * 4) + 1); // genera movimientos aleatoreos
-    if(movActual < movTotales){
-        hacerMovimientos(movActual + 1);
-    }
+    const nuevoMovimiento = Math.floor(Math.random() * 4) + 1;
+    
+    movimientos.push(nuevoMovimiento); // genera movimientos aleatoreos por que esto da el numero de la celda a iluminar Math.floor(Math.random() * 4) + 1
+    console.log("movimientos:",movimientos);
+    console.log("sustituto",movimientosJugador);
+
+    //  if(movActual < movTotales){
+    //     console.log("MOVIMIENTO ACTUAL: ",movActual);
+    //     console.log("MOVIMIENTO CONTENEDOR: ",movActual);
+    //     hacerMovimientos(movActual+1); // incrementar los movimientos
+    //  }
 }
 
 function comenzarJuego()
 {
     movimientos = [];
+    movimientosJugador = [];
     movTotales = 2;
     document.querySelector(("#comienzo")).style.display = "none";
     document.querySelector(("#debugSalvar")).style.display = "none";
@@ -67,13 +77,16 @@ function comenzarJuego()
 
 function secuencia(nivel)
 {
-    movimientos = [];
-    hacerMovimientos(1);
+    //movimientos = [];
+    //console.log("Movimientos Secuencia: ",movimientos);
+    hacerMovimientos();
     
     for (let i = 0; i < movimientos.length; i++)
     {
         iluminar(movimientos[i],600*i)
     }
+
+    movimientosJugador = [...movimientos];
     
     setTimeout(() => {
        document.querySelector("#mensaje").innerHTML = "Haz el patron";
@@ -84,20 +97,20 @@ function secuencia(nivel)
 
 function celdaClick(e)
 {
-    console.log("Celda Click!");
-    console.log("perder: ",perder);
+    //console.log("Celda Click!");
+    //console.log("perder: ",perder);
     celdaPos = e.target.getAttribute("pos");
     if(perder === 0){
         iluminar(celdaPos,0); // esto resuelve el bug de prender las luces aunque el juego no este andando
     }
     
-    if(movimientos && movimientos.length)
+    if(movimientosJugador && movimientosJugador.length)
     {
-        if(movimientos[0]==celdaPos)
+        if(movimientosJugador[0]==celdaPos)
         {
             perder = 0;
-            movimientos.shift();
-            if(!movimientos.length)
+            movimientosJugador.shift();
+            if(!movimientosJugador.length)
             {
                 movTotales++;
                 setTimeout(() => {
@@ -109,6 +122,7 @@ function celdaClick(e)
         }
         else{
             perder = 1;
+            movimientosJugador = [];
             movimientos = [];// este maldito tiene que reiniciarse por que sino el jugador puede jugar despues de perder.
             document.querySelector("#mensaje").innerHTML = "Game over!";
             setTimeout(() => {

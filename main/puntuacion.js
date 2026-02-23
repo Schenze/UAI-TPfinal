@@ -17,9 +17,9 @@ function setPuntaje()
     puntajebase--; // Decrementa el contador
     console.log("puntaje bajando",puntajebase) // debug puntaje
 
-       if (puntajebase <= 0 || !movimientos.length) 
+       if (puntajebase <= 0 || !movimientosJugador.length) 
         {
-            if(movimientos[0] != celdaPos && perder == 1) // estoy muy cansado, no puedo pensar otro metodo sin usar este flag
+            if(movimientosJugador[0] != celdaPos && perder == 1) // estoy muy cansado, no puedo pensar otro metodo sin usar este flag
             {
                 clearInterval(elLoop);// detiene el temporizador
                 //console.log("puntos totales ",acumulador);
