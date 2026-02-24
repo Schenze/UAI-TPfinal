@@ -44,14 +44,17 @@
                 <label for="nombre" id="labelNombre">Nombre </label>
                 <input id="nombre" name="NombreUsuario" type="text">
             </div>
+            <div id="labelAdvertenciaNombre" style="opacity: 0">El nombre es demasiado corto</div>
             <div>
                 <label for="email" id="labelEmail">Email</label>
-                <input id="email" name="EmailUsuario" type="email">
+                <input id="email" name="EmailUsuario" type="text">
             </div>
+            <div id="labelAdvertenciaEmail" style="opacity: 0">El formato del Email es incorrecto!!!</div>
             <div>
                 <!-- <label for="mensaje" id="labelmensaje">mensaje</label> -->
                 <textarea name="areaTexto" rows="5" cols="50" placeholder="Comentario aqui, minimo 3 letras!!!"></textarea>
             </div>
+            <div id="areaTextoAdvertencia" style="opacity: 0">El mensaje es muy corto!</div>
             </section>
             <label for="enviar">Enviar</label>
             <input id="enviar" name="enviar" type="submit">

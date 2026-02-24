@@ -12,12 +12,15 @@ function validacionForm(e)
     console.log("Validacion check");
     var nombres = document.getElementById("labelNombre");
     var emails = document.getElementById("labelEmail");
-    //var cajaMensaje = document.getElementById("areaTexto")
+    var nombreAdvertencia = document.getElementById("labelAdvertenciaNombre");
+    var emailAdvertencia = document.getElementById("labelAdvertenciaEmail");
+    var cajaMensaje = document.getElementById("areaTexto");
+    var cajaMensajeAdvertencia = document.getElementById("areaTextoAdvertencia");
     const expresiones =
     {
         nombresExpresion:/^(?=.{3,}$)[a-zA-Z]+/,
         emailExpresion:/^[^\s@]+@[^\s@]+\.[^\s@]+/,
-        mensajeExpresion:/^(?=.{3,}$)[a-zA-Z]+/
+        mensajeExpresion:/^(?=.{5,}$)[a-zA-Z\s]+$/
     }
     switch (e.target.name)
     {
@@ -25,10 +28,14 @@ function validacionForm(e)
             if(expresiones.nombresExpresion.test(e.target.value))
             {
                 nombres.style.color = "greenyellow";
+                nombreAdvertencia.style.opacity = 0;
                 chequeoNombre = true;
+
             }else
             {
                 nombres.style.color = "red";
+                nombreAdvertencia.style.opacity = 1;
+                nombreAdvertencia.style.color ="red";
                 chequeoNombre = false;
             }
             break;
@@ -37,22 +44,27 @@ function validacionForm(e)
             if(expresiones.emailExpresion.test(e.target.value))
             {
                 emails.style.color = "greenyellow";
+                emailAdvertencia.style.opacity = 0;
                 chequeoEmail = true;
             }else
             {
                 emails.style.color = "red";
+                emailAdvertencia.style.color = "red";
+                emailAdvertencia.style.opacity = 1;
                 chequeoEmail = false;
             }
             break;
         case "areaTexto":
             if(expresiones.mensajeExpresion.test(e.target.value))
             {
-                //cajaMensaje.style.color = "greenyellow";
+                cajaMensajeAdvertencia.style.color = "greenyellow";
                 chequeoCaja = true;
+                cajaMensajeAdvertencia.style.opacity = 0;
             }else
             {
-                //cajaMensaje.style.color = "red";
+                cajaMensajeAdvertencia.style.color = "red";
                 chequeoCaja = false;
+                cajaMensajeAdvertencia.style.opacity = 1;
             }
             break;
     }  
